@@ -29,7 +29,7 @@ pip install -r requirements.txt
 
 ## Usage
 This project was run on a macbook pro with 32GB of memory. It is running florence on cpu because of flash attention limitations. 
-If you want to run florence on your gpu go into tools.py and change the code to run on the gpu.
+If you want to run florence on your gpu go into tools.py and change the code to run on the gpu. All the models minus Florence take up about 10GB of memory.
 1. Run the llama-cpp server.
 ```bash
 python3 -m llama_cpp.server --model weights/functionary-small-v2.4.Q4_0.gguf --chat_format functionary-v2 --hf_pretrained_model_name_or_path meetkai/functionary-small-v2.4 
@@ -43,7 +43,7 @@ cd whisper.cpp
 ```bash
 python run_gradio.py
 ```
-4. Open the link in the browser and upload an image.
+4. Open the link in your browser and upload an image.
 
 ## Demo
 
