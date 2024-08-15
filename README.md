@@ -59,6 +59,7 @@ python run_gradio.py
 1. Test different models for image upscaling.
 2. Utilize the newer functionary models.
 3. Switch to native llama cpp or ollama for the functionary models
+4. Implement TTS 
 
 ## Acknowledgements
 1. [Functionary](https://github.com/MeetKai/functionary)
