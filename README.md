@@ -28,6 +28,8 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+This project was run on a macbook pro with 32GB of memory. It is running florence on cpu because of flash attention limitations. 
+If you want to run florence on your gpu go into tools.py and change the code to run on the gpu.
 1. Run the llama-cpp server.
 ```bash
 python3 -m llama_cpp.server --model weights/functionary-small-v2.4.Q4_0.gguf --chat_format functionary-v2 --hf_pretrained_model_name_or_path meetkai/functionary-small-v2.4 
@@ -43,3 +45,22 @@ python run_gradio.py
 ```
 4. Open the link in the browser and upload an image.
 
+## Demo
+
+
+## Limitations
+1. The image upscaling is not perfect and can generate artifacts. I used a smaller model to reduce the amount of memory used. 
+2. The whisper model sometimes does not recognize the voice commands correctly.
+3. All together the models can take a lot of memory and can be slow on a CPU.
+4. The Florence model can sometimes generate incorrect bounding boxes.
+5. The Functionary model can sometimes generate incorrect text and call the wrong tools.
+
+## Future Work
+1. Test different models for image upscaling.
+2. Utilize the newer functionary models.
+3. Switch to native llama cpp or ollama for the functionary models
+
+## Acknowledgements
+1. [Functionary](https://github.com/MeetKai/functionary)
+2. [Whisper](https://github.com/ggerganov/whisper.cpp)
+3. [LlamaCPP](https://github.com/abetlen/llama-cpp-python)

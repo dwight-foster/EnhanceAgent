@@ -1,25 +1,16 @@
 from transformers import AutoModelForCausalLM, AutoProcessor
-from transformers.dynamic_module_utils import get_imports
 from super_image import EdsrModel, ImageLoader
-from unittest.mock import patch
 from PIL import Image
 import json
 import requests
 import torch
-import os
+
+
 class Tools():
     def __init__(self):
-        def fixed_get_imports(filename: str | os.PathLike) -> list[str]:
-            """Work around for https://huggingface.co/microsoft/phi-1_5/discussions/72."""
-            if not str(filename).endswith("/modeling_florence2.py"):
-                return get_imports(filename)
-            imports = get_imports(filename)
-            imports.remove("flash_attn")
-            return imports
 
-        with patch("transformers.dynamic_module_utils.get_imports", fixed_get_imports):
-            self.model = AutoModelForCausalLM.from_pretrained("microsoft/Florence-2-base-ft", trust_remote_code=True)
-            self.processor = AutoProcessor.from_pretrained("microsoft/Florence-2-base-ft", trust_remote_code=True)
+        self.model = AutoModelForCausalLM.from_pretrained("microsoft/Florence-2-base-ft", trust_remote_code=True)
+        self.processor = AutoProcessor.from_pretrained("microsoft/Florence-2-base-ft", trust_remote_code=True)
         self.upscale = EdsrModel.from_pretrained('eugenesiow/edsr-base', scale=2).to("mps")
 
         self.image = None
@@ -111,4 +102,3 @@ class Tools():
 
         response = requests.post(self.url, files=files, data=headers)
         return response.json()['text']
-

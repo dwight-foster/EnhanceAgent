@@ -5,3 +5,4 @@ numpy~=1.26.4
 huggingface-hub~=0.24.0
 openai~=1.36.0
 gradio~=4.40.0
+torch~=2.3.0
