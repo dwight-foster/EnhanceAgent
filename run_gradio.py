@@ -98,7 +98,7 @@ with gr.Blocks() as demo:
             0].message
         tool_calls = bot_message.tool_calls
         if tool_calls:
-            image, bot_message = call_tool(tool_calls, bot_message, prompt, tool)
+            image, bot_message = call_tool(client, tool_calls, bot_message, prompt, tool)
 
         history[-1][1] = bot_message.content
         return "", history, image
@@ -108,6 +108,7 @@ with gr.Blocks() as demo:
     image.clear(tool.clear, None, queue=False)
     msg.submit(bot, [msg, chatbot, image], [msg, chatbot, image], queue=False)
     clear.click(lambda: None, None, chatbot, queue=False)
-    audio.stop_recording(tool.transcribe, [audio], [msg], queue=False)
+    audio.stop_recording(tool.transcribe, [audio], [msg], queue=False).then(lambda: None, None, audio, queue=False)
 
 demo.launch()
+
