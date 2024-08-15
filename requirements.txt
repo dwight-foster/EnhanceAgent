@@ -1,0 +1,7 @@
+requests~=2.32.2
+transformers~=4.42.4
+pillow~=10.4.0
+numpy~=1.26.4
+huggingface-hub~=0.24.0
+openai~=1.36.0
+gradio~=4.40.0
