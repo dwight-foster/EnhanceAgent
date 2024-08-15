@@ -25,6 +25,11 @@ class Tools():
         self.image = None
         self.path = None
         self.url = "http://127.0.0.1:8080/inference"
+        self.original_image = None
+
+    def upload_image(self, image_path):
+        self.load_image(image_path)
+        self.original_image = self.image
 
     def load_image(self, image_path):
         self.path = image_path
@@ -64,6 +69,14 @@ class Tools():
         x, y, width, height = box[0], box[1], box[2], box[3]
         cropped_image = self.image.crop([x, y, width, height])
         return cropped_image, json.dumps({"result": f"Successfully zoomed in on {text}."})
+
+    def zoom_out(self):
+        """Zoom out on an image."""
+        if self.image is None:
+            return self.image, json.dumps({"result": "Please upload an image first."})
+
+        self.image = self.original_image
+        return self.image, json.dumps({"result": "Successfully zoomed out."})
 
     def describe(self):
         """Describe an image."""

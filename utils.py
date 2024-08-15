@@ -8,7 +8,8 @@ def call_tool(client, tool_calls, response_message, messages, tool):
 
             "zoom": tool.zoom,
             "describe": tool.describe,
-            "upscale_image": tool.upscale_image
+            "upscale_image": tool.upscale_image,
+            "zoom_out": tool.zoom_out
         }  # only one function in this example, but you can have multiple
         messages.append(response_message)  # extend conversation with assistant's reply
         # Step 4: send the info for each function call and function response to the model
@@ -23,6 +24,8 @@ def call_tool(client, tool_calls, response_message, messages, tool):
             elif function_name == "describe":
                 img, function_response = function_to_call()
             elif function_name == "upscale_image":
+                img, function_response = function_to_call()
+            elif function_name == "zoom_out":
                 img, function_response = function_to_call()
 
             messages.append(

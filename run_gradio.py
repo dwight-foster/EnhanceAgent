@@ -47,6 +47,17 @@ tools=[{
                     "properties": {}
                 }
             }
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "zoom_out",
+                "description": "Zoom out on an image. You already have the image you don't need it.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {}
+                }
+            }
         }
     ]
 
@@ -104,6 +115,7 @@ with gr.Blocks() as demo:
         return "", history, image
 
 
+    image.upload(tool.upload_image, image, None, queue=False)
     image.change(tool.load_image, image, None, queue=False)
     image.clear(tool.clear, None, queue=False)
     msg.submit(bot, [msg, chatbot, image], [msg, chatbot, image], queue=False)
