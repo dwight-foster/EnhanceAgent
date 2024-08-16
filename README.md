@@ -47,7 +47,7 @@ python run_gradio.py
 
 ## Demo
 
-[![Demo](src/bourne.jpg)](https://youtu.be/yDaR5sffpvI)
+Demo Video: https://youtu.be/yDaR5sffpvI
 
 ## Limitations
 1. The image upscaling is not very good. I used a smaller model to reduce the amount of memory used. 
