@@ -47,7 +47,7 @@ python run_gradio.py
 
 ## Demo
 
-[![Demo](src/bourne.jpg)](src/demo.mp4)
+[![Demo](src/bourne.jpg)](src/Demo.mp4)
 
 ## Limitations
 1. The image upscaling is not very good. I used a smaller model to reduce the amount of memory used. 
