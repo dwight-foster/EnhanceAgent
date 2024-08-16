@@ -18,7 +18,7 @@ class Tools():
             return imports
 
         with patch("transformers.dynamic_module_utils.get_imports", fixed_get_imports):
-            self.model = AutoModelForCausalLM.from_pretrained("microsoft/Florence-2-base-ft", trust_remote_code=True).to("mps")
+            self.model = AutoModelForCausalLM.from_pretrained("microsoft/Florence-2-base-ft", trust_remote_code=True)
             self.processor = AutoProcessor.from_pretrained("microsoft/Florence-2-base-ft", trust_remote_code=True)
         self.upscale = EdsrModel.from_pretrained('eugenesiow/edsr-base', scale=2).to("mps")
 

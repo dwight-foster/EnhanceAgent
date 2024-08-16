@@ -6,7 +6,7 @@ def call_tool(client, tool_calls, response_message, messages, tool):
         # Note: the JSON response may not always be valid; be sure to handle errors
         available_functions = {
 
-            "zoom": tool.zoom,
+            "zoom_in": tool.zoom,
             "describe": tool.describe,
             "upscale_image": tool.upscale_image,
             "zoom_out": tool.zoom_out
@@ -18,7 +18,7 @@ def call_tool(client, tool_calls, response_message, messages, tool):
             function_to_call = available_functions[function_name]
             function_args = json.loads(tool_call.function.arguments)
 
-            if function_name == "zoom":
+            if function_name == "zoom_in":
                 img, function_response = function_to_call(
                     text=function_args.get("text"))
             elif function_name == "describe":

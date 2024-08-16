@@ -11,7 +11,7 @@ client = openai.OpenAI(
 tools=[{
             "type": "function",
             "function": {
-                "name": "zoom",
+                "name": "zoom_in",
                 "description": "Zoom in on any objects image. You already have the image you don't need it. Could be faces, people, boats, etc.",
                 "parameters": {
                     "type": "object",
@@ -52,7 +52,7 @@ tools=[{
             "type": "function",
             "function": {
                 "name": "zoom_out",
-                "description": "Zoom out on an image. You already have the image you don't need it.",
+                "description": "Zoom out to the original image. Only use when the person wants to go back not when they want to zoom in.",
                 "parameters": {
                     "type": "object",
                     "properties": {}
@@ -118,7 +118,7 @@ with gr.Blocks() as demo:
     image.upload(tool.upload_image, image, None, queue=False)
     image.change(tool.load_image, image, None, queue=False)
     image.clear(tool.clear, None, queue=False)
-    msg.submit(bot, [msg, chatbot, image], [msg, chatbot, image], queue=False)
+    msg.submit(bot, [msg, chatbot, image], [msg, chatbot, image], queue=False, scroll_to_output=True)
     clear.click(lambda: None, None, chatbot, queue=False)
     audio.stop_recording(tool.transcribe, [audio], [msg], queue=False).then(lambda: None, None, audio, queue=False)
 

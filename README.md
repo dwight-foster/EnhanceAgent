@@ -47,9 +47,10 @@ python run_gradio.py
 
 ## Demo
 
+[![Demo](src/bourne.jpg)](src/demo.mp4)
 
 ## Limitations
-1. The image upscaling is not perfect and can generate artifacts. I used a smaller model to reduce the amount of memory used. 
+1. The image upscaling is not very good. I used a smaller model to reduce the amount of memory used. 
 2. The whisper model sometimes does not recognize the voice commands correctly.
 3. All together the models can take a lot of memory and can be slow on a CPU.
 4. The Florence model can sometimes generate incorrect bounding boxes.
