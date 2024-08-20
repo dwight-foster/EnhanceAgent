@@ -7,6 +7,8 @@ import json
 import requests
 import torch
 import os
+
+
 class Tools():
     def __init__(self):
         def fixed_get_imports(filename: str | os.PathLike) -> list[str]:
@@ -87,6 +89,7 @@ class Tools():
         return self.image, json.dumps({"result": results})
 
     def upscale_image(self):
+        """Upscale an image by 2x."""
         if self.image is None:
             return self.image, json.dumps({"result": "Please upload an image first."})
         inputs = ImageLoader().load_image(self.image)
@@ -99,6 +102,7 @@ class Tools():
         return self.image, json.dumps({"result": "Image successfully upscaled."})
 
     def transcribe(self, audio_path):
+        """"Transcribe an audio file."""
         headers = {
             'Content-Type': 'audio/wav',
         }
@@ -111,4 +115,3 @@ class Tools():
 
         response = requests.post(self.url, files=files, data=headers)
         return response.json()['text']
-
