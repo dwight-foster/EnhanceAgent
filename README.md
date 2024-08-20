@@ -58,10 +58,10 @@ python run_gradio.py
 5. The Functionary model can sometimes generate incorrect text and call the wrong tools.
 
 ## Future Work
-1. Test different models for image upscaling.
-2. Utilize the newer functionary models.
-3. Switch to native llama cpp or ollama for the functionary models
-4. Implement TTS 
+- [ ] Test different models for image upscaling. 
+- [ ] Utilize the newer functionary models.
+- [ ] Switch to native llama cpp or ollama for the functionary models
+- [ ] Implement TTS 
 
 ## Acknowledgements
 1. [Functionary](https://github.com/MeetKai/functionary)
