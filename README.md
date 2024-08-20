@@ -70,4 +70,4 @@ python run_gradio.py
 ## Acknowledgements
 1. [Functionary](https://github.com/MeetKai/functionary)
 2. [Whisper](https://github.com/ggerganov/whisper.cpp)
-3. [LlamaCPP](https://github.com/abetlen/llama-cpp-python)
+3. [Ollama](https://github.com/ollama/ollama)
