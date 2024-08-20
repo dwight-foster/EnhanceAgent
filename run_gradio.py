@@ -1,12 +1,10 @@
-import openai
+import ollama
 from utils import call_tool
 from tools import Tools
 import gradio as gr
 
-client = openai.OpenAI(
-    api_key="llama-cpp",  # can be anything
-    base_url="http://localhost:8000/v1",  # NOTE: Replace with IP address and port of your llama-cpp-python server
-)
+client = ollama.Client()
+
 
 tools=[{
             "type": "function",
@@ -104,14 +102,12 @@ with gr.Blocks() as demo:
             prompt.append({"role": "system", "content": "The user did not upload an image."})
         prompt.append({"role": "user", "content": message})
         history.append([message, ""])
-        bot_message = \
-        client.chat.completions.create(model="llama", messages=prompt, tools=tools, tool_choice="auto").choices[
-            0].message
-        tool_calls = bot_message.tool_calls
+        bot_message = client.chat(model="dwightfoster03/functionary-small-v3.1", messages=prompt, tools=tools)['message']
+
+        tool_calls = bot_message.get("tool_calls")
         if tool_calls:
             image, bot_message = call_tool(client, tool_calls, bot_message, prompt, tool)
-
-        history[-1][1] = bot_message.content
+        history[-1][1] = bot_message['content']
         return "", history, image
 
 
