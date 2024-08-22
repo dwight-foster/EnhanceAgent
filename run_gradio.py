@@ -102,7 +102,7 @@ with gr.Blocks() as demo:
             prompt.append({"role": "system", "content": "The user did not upload an image."})
         prompt.append({"role": "user", "content": message})
         history.append([message, ""])
-        bot_message = client.chat(model="dwightfoster03/functionary-small-v3.1", messages=prompt, tools=tools)['message']
+        bot_message = client.chat(model="llama3.1", messages=prompt, tools=tools)['message']
 
         tool_calls = bot_message.get("tool_calls")
         if tool_calls:

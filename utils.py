@@ -34,6 +34,6 @@ def call_tool(client, tool_calls, response_message, messages, tool):
             )
 
         # Second API call: Get final response from the model
-        final_response = client.chat(model="dwightfoster03/functionary-small-v3.1",
+        final_response = client.chat(model="llama3.1",
                                      messages=messages)  # get a new response from the model where it can see the function response
         return img, final_response['message']
